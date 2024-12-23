@@ -45,3 +45,9 @@ while not game_over:
     else: 
       print("This spot is already taken. Try again.")
 
+restart = input("Do you want to restart the game? Type 'restart' to play again or 'exit' to quit: ")
+if restart == "restart": 
+    game_running = True 
+else: 
+    game_running = False 
+    print("Thanks for playing!")
