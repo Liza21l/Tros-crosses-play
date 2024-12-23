@@ -18,7 +18,7 @@ while not game_over:
         col = int(input(f"Player {first_player} enter the col (0-2):"))
     else:
         row, col = random.randint(0, 2), random.randint(0, 2)
-        while board[row][col] != "":
+        while board[row][col] != " ":
             row, col = random.randint(0,2), random.randint(0,2)
             print(f"Computer chose: row {row}, col {col}")
             
