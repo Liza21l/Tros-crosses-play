@@ -1,16 +1,27 @@
+import random
 print("Вітаємо! Ви граєте гру хрестики-нулики")
 print("Давай розпочнемо 😊")
+mode = input("Виберіть режим гри. Для того щоб вибрати, необхідно вписати команду 'simple' або 'computer' для гри з комп'ютером: ")
 board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
 first_player = "X"
 
+
 game_over = False
+
 while not game_over:
     for row in board:
         print("|".join(row)) 
         print("_" * 5)
-        
-    row = int(input(f"Player {first_player} enter the row (0-2):"))
-    col = int(input(f"Player {first_player} enter the col (0-2):"))
+
+    if first_player == "X" or mode == "simple":   
+        row = int(input(f"Player {first_player} enter the row (0-2):"))
+        col = int(input(f"Player {first_player} enter the col (0-2):"))
+    else:
+        row, col = random.randint(0, 2), random.randint(0, 2)
+        while board[row][col] != "":
+            row, col = random.randint(0,2), random.randint(0,2)
+            print(f"Computer chose: row {row}, col {col}")
+            
     if board[row][col] == " ":
         board[row][col] = first_player
 
@@ -46,8 +57,10 @@ while not game_over:
       print("This spot is already taken. Try again.")
 
 restart = input("Do you want to restart the game? Type 'restart' to play again or 'exit' to quit: ")
-if restart == "restart": 
-    game_running = True 
-else: 
-    game_running = False 
+if restart == "restart":
+    board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
+    first_player = "X"
+    game_over = False
+else:
+    game_over = True
     print("Thanks for playing!")
