@@ -56,11 +56,11 @@ while not game_over:
     else: 
       print("This spot is already taken. Try again.")
 
-restart = input("Do you want to restart the game? Type 'restart' to play again or 'exit' to quit: ")
+restart = input("Ти хочеш перезапустити гру? Тоді треба ввести команду 'restart' щоб грати знову або 'exit' щоб вийти: ")
 if restart == "restart":
     board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
     first_player = "X"
     game_over = False
 else:
     game_over = True
-    print("Thanks for playing!")
+    print("Дякую за гру!")
