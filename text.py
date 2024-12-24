@@ -1,7 +1,4 @@
 import random
-# from  colorama import Fore, Back, Style, init
-
-# init(autoreset = False)
 print("Вітаємо! Ви граєте гру хрестики-нулики")
 print("Давай розпочнемо 😊")
 mode = input("Виберіть режим гри. Для того щоб вибрати, необхідно вписати команду 'simple' або 'computer' для гри з комп'ютером: ")
@@ -15,11 +12,6 @@ while not game_over:
     for row in board:
         print("|".join(row)) 
         print("_" * 5)
-        # for cell in row:
-        #     if cell == "X":
-        #         print(Fore.RED + cell, end="")
-        #     elif cell == "O":
-        #         print(Fore.BLUE + cell, end="")
             
 
     if first_player == "X" or mode == "simple":   
