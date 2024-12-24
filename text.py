@@ -1,9 +1,16 @@
 import random
+from  colorama import Fore, Back, Style, init
+
+init(autoreset = False)
 print("Вітаємо! Ви граєте гру хрестики-нулики")
 print("Давай розпочнемо 😊")
 mode = input("Виберіть режим гри. Для того щоб вибрати, необхідно вписати команду 'simple' або 'computer' для гри з комп'ютером: ")
+# pole = int(input("Виберіть "))
 board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
 first_player = "X"
+x_wins = 0
+o_wins = 0
+draw = 0
 
 
 game_over = False
@@ -41,6 +48,10 @@ while not game_over:
 
             print(f"Player {first_player} wins!") 
             game_over = True
+            if first_player == "X":
+                x_wins += 1
+            else:
+                o_wins += 1
         
             restart = input("Ти хочеш перезапустити гру? Тоді треба ввести команду 'restart' щоб грати знову або 'exit' щоб вийти: ")
             if restart == "restart":
@@ -57,11 +68,15 @@ while not game_over:
               if " " in row: 
                   draw = False 
               if draw: 
-                  row(board) 
+                  for row in board:
+                    print("|".join(row)) 
+                    print("_" * 5)
                   print("It's a draw!") 
                   game_over = True  
-
-              first_player = "O" if first_player == "X" else "X"
+                  draw += 1
+              else:
+               first_player = "O" if first_player == "X" else "X"
   
     else: 
       print("This spot is already taken. Try again.")
+print(f"Player X wins: {x_wins}, player O wins: {o_wins} , draw: {draw} ")
