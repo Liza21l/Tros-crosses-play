@@ -1,4 +1,7 @@
 import random
+# from  colorama import Fore, Back, Style, init
+
+# init(autoreset = False)
 print("Вітаємо! Ви граєте гру хрестики-нулики")
 print("Давай розпочнемо 😊")
 mode = input("Виберіть режим гри. Для того щоб вибрати, необхідно вписати команду 'simple' або 'computer' для гри з комп'ютером: ")
@@ -12,6 +15,12 @@ while not game_over:
     for row in board:
         print("|".join(row)) 
         print("_" * 5)
+        # for cell in row:
+        #     if cell == "X":
+        #         print(Fore.RED + cell, end="")
+        #     elif cell == "O":
+        #         print(Fore.BLUE + cell, end="")
+            
 
     if first_player == "X" or mode == "simple":   
         row = int(input(f"Player {first_player} enter the row (0-2):"))
@@ -40,6 +49,15 @@ while not game_over:
 
             print(f"Player {first_player} wins!") 
             game_over = True
+        
+            restart = input("Ти хочеш перезапустити гру? Тоді треба ввести команду 'restart' щоб грати знову або 'exit' щоб вийти: ")
+            if restart == "restart":
+                board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
+                first_player = "X"
+                game_over = False
+            else:
+                game_over = True
+                print("Дякую за гру!")
 
         else: 
           draw = True 
@@ -55,12 +73,3 @@ while not game_over:
   
     else: 
       print("This spot is already taken. Try again.")
-
-restart = input("Ти хочеш перезапустити гру? Тоді треба ввести команду 'restart' щоб грати знову або 'exit' щоб вийти: ")
-if restart == "restart":
-    board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
-    first_player = "X"
-    game_over = False
-else:
-    game_over = True
-    print("Дякую за гру!")
