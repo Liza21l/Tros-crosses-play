@@ -10,7 +10,7 @@ board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
 first_player = "X"
 x_wins = 0
 o_wins = 0
-draw = 0
+draws = 0
 
 
 game_over = False
@@ -28,7 +28,7 @@ while not game_over:
         row, col = random.randint(0, 2), random.randint(0, 2)
         while board[row][col] != " ":
             row, col = random.randint(0,2), random.randint(0,2)
-            print(f"Computer chose: row {row}, col {col}")
+    print(f"Computer chose: row {row}, col {col}")
             
     if board[row][col] == " ":
         board[row][col] = first_player
@@ -62,21 +62,25 @@ while not game_over:
                 game_over = True
                 print("Дякую за гру!")
 
-        else: 
-          draw = True 
-          for row in board: 
-              if " " in row: 
-                  draw = False 
-              if draw: 
-                  for row in board:
-                    print("|".join(row)) 
+        else:
+            draw = True
+            for row in board:
+                if " " in row:  # Якщо є порожня клітинка, нічиї немає
+                    draw = False
+                    break
+
+            if draw:
+                for row in board:
+                    print("|".join(row))
                     print("_" * 5)
-                  print("It's a draw!") 
-                  game_over = True  
-                  draw += 1
-              else:
-               first_player = "O" if first_player == "X" else "X"
+                print("It's a draw!")
+                game_over = True
+                draws += 1
+
+            else:
+                first_player = "O" if first_player == "X" else "X"
   
     else: 
       print("This spot is already taken. Try again.")
-print(f"Player X wins: {x_wins}, player O wins: {o_wins} , draw: {draw} ")
+
+print(f"Player X wins: {x_wins}, player O wins: {o_wins} , draws: {draws} ")
