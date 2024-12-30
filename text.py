@@ -17,9 +17,8 @@ game_over = False
 
 while not game_over:
     for row in board:
-        print("|".join(row)) 
-        print("_" * 5)
-            
+        print("|".join([Fore.RED + "X" + Style.RESET_ALL if cell == "X" else Fore.BLUE + "O" + Style.RESET_ALL if cell == "O" else cell for cell in row])) 
+        print("_" * 5)            
 
     if first_player == "X" or mode == "simple":   
         row = int(input(f"Player {first_player} enter the row (0-2):"))
@@ -28,7 +27,7 @@ while not game_over:
         row, col = random.randint(0, 2), random.randint(0, 2)
         while board[row][col] != " ":
             row, col = random.randint(0,2), random.randint(0,2)
-    print(f"Computer chose: row {row}, col {col}")
+        print(f"Computer chose: row {row}, col {col}")
             
     if board[row][col] == " ":
         board[row][col] = first_player
@@ -43,7 +42,7 @@ while not game_over:
 
         if winner: 
             for row in board: 
-                print("|".join(row)) 
+                print("|".join([Fore.RED + "X" + Style.RESET_ALL if cell == "X" else Fore.BLUE + "O" + Style.RESET_ALL if cell == "O" else cell for cell in row])) 
                 print("_" * 5) 
 
             print(f"Player {first_player} wins!") 
@@ -71,7 +70,7 @@ while not game_over:
 
             if draw:
                 for row in board:
-                    print("|".join(row))
+                    print("|".join([Fore.RED + "X" + Style.RESET_ALL if cell == "X" else Fore.BLUE + "O" + Style.RESET_ALL if cell == "O" else cell for cell in row]))
                     print("_" * 5)
                 print("It's a draw!")
                 game_over = True
@@ -79,8 +78,18 @@ while not game_over:
 
             else:
                 first_player = "O" if first_player == "X" else "X"
+                
   
     else: 
       print("This spot is already taken. Try again.")
 
+with open ('Game_results.txt', 'a') as file:
+    if winner:
+        print(f"Player {first_player} wins! Well done😎")
+    else:
+        print(f"It's a draw!")
+    print(f"Player X wins: {x_wins}, Player O wins: {o_wins}, Draw: {draws}")
+    print('-' * 20)
+
 print(f"Player X wins: {x_wins}, player O wins: {o_wins} , draws: {draws} ")
+
