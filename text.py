@@ -88,8 +88,8 @@ with open ('Game_results.txt', 'a') as file:
         print(f"Player {first_player} wins! Well done😎")
     else:
         print(f"It's a draw!")
-    print(f"Player X wins: {x_wins}, Player O wins: {o_wins}, Draw: {draws}")
-    print('-' * 20)
+    print(f"Player X wins: {x_wins}, Player O wins: {o_wins}, Draw: {draws}", file=file)
+    print('-' * 20, file=file)
 
 print(f"Player X wins: {x_wins}, player O wins: {o_wins} , draws: {draws} ")
 

@@ -1,0 +1,2 @@
+Player X wins: 1, Player O wins: 0, Draw: 0
+--------------------
